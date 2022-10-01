@@ -40,11 +40,23 @@ const todoList = () => {
     const toDisplayableList = (list) => {
       var result = ""
       for (let index = 0; index < list.length; index++) {
-        if(list[index]['completed']==true){
-          result += '[x] '+list[index]['title']
+        
+        
+        if(list[index]['dueDate']!=today){
+          if(list[index]['completed']==true){
+            result += '[x] '+list[index]['title']+" "+list[index]['dueDate']
+          }
+          else{
+            result+='[ ] '+list[index]['title']+" "+list[index]['dueDate']
+          }
         }
         else{
-          result+='[ ] '+list[index]['title']
+          if(list[index]['completed']==true){
+            result += '[x] '+list[index]['title']
+          }
+          else{
+            result+='[ ] '+list[index]['title']
+          }
         }
         if(index<list.length-1 && list.length>1){
           result+="\n"
