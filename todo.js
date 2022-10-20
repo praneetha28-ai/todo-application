@@ -1,5 +1,17 @@
 /* eslint-disable no-undef */
 const todoList = () => {
+  const formattedDate = (d) => {
+    return d.toISOString().split("T")[0];
+  };
+
+  var dateToday = new Date();
+  const today = formattedDate(dateToday);
+  // const yesterday = formattedDate(
+  //   new Date(new Date().setDate(dateToday.getDate() - 1))
+  // )
+  // const tomorrow = formattedDate(
+  //   new Date(new Date().setDate(dateToday.getDate() + 1))
+  // )
   all = [];
   const add = (todoItem) => {
     all.push(todoItem);
@@ -73,6 +85,7 @@ const todoList = () => {
     toDisplayableList,
   };
 };
+
 module.exports = todoList;
 // ####################################### #
 // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
