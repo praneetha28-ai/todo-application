@@ -1,17 +1,11 @@
 /* eslint-disable no-undef */
 const todoList = () => {
-  const formattedDate = (d) => {
-    return d.toISOString().split("T")[0];
-  };
-
-  var dateToday = new Date();
-  const today = formattedDate(dateToday);
-  // const yesterday = formattedDate(
-  //   new Date(new Date().setDate(dateToday.getDate() - 1))
-  // )
-  // const tomorrow = formattedDate(
-  //   new Date(new Date().setDate(dateToday.getDate() + 1))
-  // )
+  // var offset = (24*60*60*1000) * 1
+  //   var yesterday = new Date();
+  //   yesterday.setDate(yesterday.getTime() - offset);
+  //   var tomorrow = new Date();
+  //   tomorrow.setDate(tomorrow.getTime()+offset);
+  // var today = new Date();
   all = [];
   const add = (todoItem) => {
     all.push(todoItem);
@@ -21,33 +15,33 @@ const todoList = () => {
   };
 
   const overdue = () => {
-    var overdue = [];
+    var overdueList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] < today) {
-        overdue.push(all[index]);
+      if (all[index]["dueDate"] == -1) {
+        overdueList.push(all[index]);
       }
     }
-    return overdue;
+    return overdueList;
   };
 
   const dueToday = () => {
-    var duetoday = [];
+    var duetodayList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == today) {
-        duetoday.push(all[index]);
+      if (all[index]["dueDate"] == 0) {
+        duetodayList.push(all[index]);
       }
     }
-    return duetoday;
+    return duetodayList;
   };
 
   const dueLater = () => {
-    var duelater = [];
+    var duelaterList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] > today) {
-        duelater.push(all[index]);
+      if (all[index]["dueDate"] == 1) {
+        duelaterList.push(all[index]);
       }
     }
-    return duelater;
+    return duelaterList;
   };
 
   const toDisplayableList = (list) => {
