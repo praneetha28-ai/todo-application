@@ -1,6 +1,18 @@
 /* eslint-disable no-undef */
 const todoList = require("../todo");
 const { all, markAsComplete, add, overdue, dueLater, dueToday } = todoList();
+const formattedDate = (d) => {
+  return d.toISOString().split("T")[0];
+};
+
+var dateToday = new Date();
+const today = formattedDate(dateToday);
+const yesterday = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() - 1))
+);
+const tomorrow = formattedDate(
+  new Date(new Date().setDate(dateToday.getDate() + 1))
+);
 describe("Todo test suite", () => {
   beforeAll(() => {
     // var offset = (24*60*60*1000) * 1;
@@ -12,17 +24,17 @@ describe("Todo test suite", () => {
     add({
       title: "Test Todo",
       completed: false,
-      dueDate: 0,
+      dueDate: today,
     }),
       add({
         title: "Test Todo",
         completed: false,
-        dueDate: -1,
+        dueDate: yesterday,
       }),
       add({
         title: "Test Todo",
         completed: false,
-        dueDate: 1,
+        dueDate: tomorrow,
       });
   });
 
@@ -31,7 +43,7 @@ describe("Todo test suite", () => {
     add({
       title: "Test Todo",
       completed: false,
-      dueDate: 0,
+      dueDate: today,
     });
     expect(all.length).toBe(count + 1);
   });

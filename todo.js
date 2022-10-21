@@ -6,6 +6,18 @@ const todoList = () => {
   //   var tomorrow = new Date();
   //   tomorrow.setDate(tomorrow.getTime()+offset);
   // var today = new Date();
+  const formattedDate = (d) => {
+    return d.toISOString().split("T")[0];
+  };
+
+  var dateToday = new Date();
+  const today = formattedDate(dateToday);
+  const yesterday = formattedDate(
+    new Date(new Date().setDate(dateToday.getDate() - 1))
+  );
+  const tomorrow = formattedDate(
+    new Date(new Date().setDate(dateToday.getDate() + 1))
+  );
   all = [];
   const add = (todoItem) => {
     all.push(todoItem);
@@ -17,7 +29,7 @@ const todoList = () => {
   const overdue = () => {
     var overdueList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == -1) {
+      if (all[index]["dueDate"] == yesterday) {
         overdueList.push(all[index]);
       }
     }
@@ -27,7 +39,7 @@ const todoList = () => {
   const dueToday = () => {
     var duetodayList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == 0) {
+      if (all[index]["dueDate"] == today) {
         duetodayList.push(all[index]);
       }
     }
@@ -37,7 +49,7 @@ const todoList = () => {
   const dueLater = () => {
     var duelaterList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == 1) {
+      if (all[index]["dueDate"] == tomorrow) {
         duelaterList.push(all[index]);
       }
     }
