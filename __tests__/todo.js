@@ -5,22 +5,16 @@ const formattedDate = (d) => {
   return d.toISOString().split("T")[0];
 };
 
-var dateToday = new Date();
+let dateToday = new Date();
 const today = formattedDate(dateToday);
 const yesterday = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() - 1))
+  new Date(new Date().setDate(dateToday.getDate() - 3))
 );
 const tomorrow = formattedDate(
   new Date(new Date().setDate(dateToday.getDate() + 1))
 );
 describe("Todo test suite", () => {
   beforeAll(() => {
-    // var offset = (24*60*60*1000) * 1;
-    // var today = new Date();
-    // var yesterday = new Date();
-    // yesterday.setDate(yesterday.getTime() - offset);
-    // var tomorrow = new Date();
-    // tomorrow.setDate(tomorrow.getTime()+offset);
     add({
       title: "Test Todo",
       completed: false,
@@ -55,17 +49,17 @@ describe("Todo test suite", () => {
   });
 
   test("Retrieval of overdue items", () => {
-    var l = overdue();
-    expect(l.length).toEqual(1);
+    let overDueToDo = overdue();
+    expect(overDueToDo.length).toEqual(1);
   });
 
   test("Retrieval of due today items", () => {
-    var l = dueToday();
-    expect(l.length).toEqual(2);
+    let dueTodayToDo = dueToday();
+    expect(dueTodayToDo.length).toEqual(2);
   });
 
   test("Retrieval of due later items", () => {
-    var l = dueLater();
-    expect(l.length).toEqual(1);
+    let dueLaterToDo = dueLater();
+    expect(dueLaterToDo.length).toEqual(1);
   });
 });

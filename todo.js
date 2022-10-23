@@ -12,13 +12,7 @@ const todoList = () => {
 
   var dateToday = new Date();
   const today = formattedDate(dateToday);
-  const yesterday = formattedDate(
-    new Date(new Date().setDate(dateToday.getDate() - 1))
-  );
-  const tomorrow = formattedDate(
-    new Date(new Date().setDate(dateToday.getDate() + 1))
-  );
-  all = [];
+  let all = [];
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -27,9 +21,9 @@ const todoList = () => {
   };
 
   const overdue = () => {
-    var overdueList = [];
+    let overdueList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == yesterday) {
+      if (all[index]["dueDate"] < today) {
         overdueList.push(all[index]);
       }
     }
@@ -37,9 +31,9 @@ const todoList = () => {
   };
 
   const dueToday = () => {
-    var duetodayList = [];
+    let duetodayList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == today) {
+      if (all[index]["dueDate"] === today) {
         duetodayList.push(all[index]);
       }
     }
@@ -47,9 +41,9 @@ const todoList = () => {
   };
 
   const dueLater = () => {
-    var duelaterList = [];
+    let duelaterList = [];
     for (let index = 0; index < all.length; index++) {
-      if (all[index]["dueDate"] == tomorrow) {
+      if (all[index]["dueDate"] > today) {
         duelaterList.push(all[index]);
       }
     }
@@ -91,7 +85,6 @@ const todoList = () => {
     toDisplayableList,
   };
 };
-
 module.exports = todoList;
 // ####################################### #
 // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
