@@ -4,7 +4,7 @@
     "password": "prabase",
     "database": "todo_db_dev",
     "host": "127.0.0.1",
-    "logging":false,
+    "logging": false,
     "dialect": "postgres"
   },
   "test": {
@@ -12,7 +12,7 @@
     "password": "prabase",
     "database": "todo_db_test",
     "host": "127.0.0.1",
-    "logging":false,
+    "logging": false,
     "dialect": "postgres"
   },
   "production": {
@@ -20,7 +20,7 @@
     "password": "prabase",
     "database": "todo_db_prod",
     "host": "127.0.0.1",
-    "logging":false,
+    "logging": false,
     "dialect": "postgres"
   }
 }
