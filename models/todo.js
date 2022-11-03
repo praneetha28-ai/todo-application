@@ -18,16 +18,19 @@ module.exports = (sequelize, DataTypes) => {
 
       console.log("Overdue");
 
-      await this.overdue();
+      const doverdue = await this.overdue();
+      console.log(doverdue);
       console.log("\n");
 
       console.log("Due Today");
 
-      await this.dueToday();
+      const dduetoday = await this.dueToday();
+      console.log(dduetoday);
       console.log("\n");
 
       console.log("Due Later");
-      await this.dueLater();
+      const dduelater = await this.dueLater();
+      console.log(dduelater);
     }
 
     static async overdue() {
@@ -42,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         const overduelist = overdueItems
           .map((overdueitem) => overdueitem.displayableString())
           .join("\n");
-        console.log(overduelist);
+        // console.log(overduelist);
         return overduelist;
       } catch (error) {
         console.log(error);
@@ -62,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
         const duetodaylist = duetodayitems
           .map((duetodayitem) => duetodayitem.displayableString())
           .join("\n");
-        console.log(duetodaylist);
+        // console.log(duetodaylist);
         return duetodaylist;
       } catch (error) {
         console.log(error);
@@ -82,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
         const duelaterlist = duelateritems
           .map((duelateritem) => duelateritem.displayableString())
           .join("\n");
-        console.log(duelaterlist);
+        // console.log(duelaterlist);
         return duelaterlist;
       } catch (error) {
         console.log(error);
