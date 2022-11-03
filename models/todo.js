@@ -42,9 +42,11 @@ module.exports = (sequelize, DataTypes) => {
         const overduelist = overdueItems
           .map((overdueitem) => overdueitem.displayableString())
           .join("\n");
+        console.log(overduelist);
         return overduelist;
       } catch (error) {
-        console.error(error);
+        console.log(error);
+        return error;
       }
     }
 
@@ -60,9 +62,11 @@ module.exports = (sequelize, DataTypes) => {
         const duetodaylist = duetodayitems
           .map((duetodayitem) => duetodayitem.displayableString())
           .join("\n");
+        console.log(duetodaylist);
         return duetodaylist;
       } catch (error) {
-        console.error(error);
+        console.log(error);
+        return error;
       }
     }
 
@@ -78,9 +82,11 @@ module.exports = (sequelize, DataTypes) => {
         const duelaterlist = duelateritems
           .map((duelateritem) => duelateritem.displayableString())
           .join("\n");
+        console.log(duelaterlist);
         return duelaterlist;
       } catch (error) {
-        console.error(error);
+        console.log(error);
+        return error;
       }
     }
 
